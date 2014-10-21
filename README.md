@@ -28,7 +28,7 @@ A vCard file consists of one or more vCards. All vCards begin with BEGIN:VCARD a
 
 The DFDL schemas use dfdl:sequenceKind='unordered' to model that properties can appear in any order.
 
-The vCard 2.1 schemas are in the '2.1' folder.
+The vCard 2.1 schemas are in the '2.1' folder. Any limitations are documemted in the schema prologs.
 
 Test data and infosets are included.
 
