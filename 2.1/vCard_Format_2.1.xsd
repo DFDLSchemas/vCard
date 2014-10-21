@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--***********************************************************************
+* DFDL vCard schema reproduced from IETF RFC 6350, vCard Format Specification 
+* (http://tools.ietf.org/html/rfc6350) 
+* 
+* Copyright 2014 IETF Trust and the persons identified as the document authors, all rights reserved. 
+* 
+* Redistribution and use in source and binary forms, with or without modification, is permitted to, and 
+* subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the 
+* IETF Trust’s Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). 
+* 
+* Contributors: 
+* 
+* IBM - initial implementation of the DFDL vCard schema 
+*********************************************************************** 
+* Version 1.0 vCard_Format.xsd 
+*
+* Change History:
+***********************************************************************
+* This DFDL schema provides a set of DFDL property values and other DFDL
+* constructs to assist in the creation of DFDL schemas that model vCards, 
+* for use with DFDL processors.
+*
+* Example use:
+* <xsd:import namespace="http://www.ibm.com/dfdl/vCard/Format" schemaLocation="vCard_Format.xsd"/>
+*********************************************************************** -->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+     xmlns:fn="http://www.w3.org/2005/xpath-functions"
+     targetNamespace="http://www.ibm.com/dfdl/vCard/2.1/Format" 
+	 xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
+	 xmlns:fmt="http://www.ibm.com/dfdl/vCard/Format" 
+	 xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
+	
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+
+			<!-- Escape scheme for vCard parameters and values -->
+			<dfdl:defineEscapeScheme name="vCardEscapeScheme">
+        		<dfdl:escapeScheme escapeCharacter="/" escapeEscapeCharacter="/" escapeKind="escapeCharacter" extraEscapedCharacters=""/>
+      		</dfdl:defineEscapeScheme>
+      
+			<!-- Default DFDL property values -->
+		    <dfdl:defineFormat name="vCardDefinitionFormat">
+       			<dfdl:format alignment="1" 
+       						 alignmentUnits="bytes" 
+       						 binaryFloatRep="ieee" 
+       						 byteOrder="{$dfdl:byteOrder}" 
+       						 calendarCenturyStart="53" 
+       						 calendarCheckPolicy="lax" 
+       						 calendarDaysInFirstWeek="4" 
+       						 calendarFirstDayOfWeek="Monday" 
+       						 calendarLanguage="en-US" 
+       						 calendarObserveDST="yes" 
+       						 calendarPattern="yyyy-MM-dd'T'HH:mm:ss" 
+       						 calendarPatternKind="explicit" 
+       						 calendarTimeZone="UTC" 
+       						 choiceLengthKind="implicit" 
+       						 decimalSigned="yes" 
+       						 documentFinalTerminatorCanBeMissing="no" 
+       						 emptyValueDelimiterPolicy="both" 
+       						 encoding="{$dfdl:encoding}" 
+       						 escapeSchemeRef="fmt:vCardEscapeScheme" 
+       						 fillByte="0" 
+       						 floating="no" 
+       						 ignoreCase="yes" 
+       						 initiatedContent="no" 
+       						 initiator="" 
+       						 leadingSkip="0" 
+       						 lengthKind="delimited" 
+       						 lengthUnits="characters" 
+       						 nilKind="literalValue" 
+       						 nilValueDelimiterPolicy="none" 
+       						 occursCountKind="implicit" 
+       						 outputNewLine="%CR;%LF;" 
+       						 representation="text" 
+       						 separator="" 
+       						 separatorPosition="infix" 
+       						 separatorSuppressionPolicy="anyEmpty" 
+       						 sequenceKind="ordered" 
+       						 terminator="" 
+       						 textBidi="no" 
+       						 textBooleanFalseRep="false" 
+       						 textBooleanJustification="left" 
+       						 textBooleanPadCharacter="%SP;" 
+       						 textBooleanTrueRep="true" 
+       						 textCalendarJustification="left" 
+       						 textCalendarPadCharacter="%SP;" 
+       						 textNumberCheckPolicy="lax" 
+       						 textNumberJustification="right" 
+       						 textNumberPadCharacter="%SP;" 
+       						 textNumberRep="standard" 
+       						 textNumberRounding="pattern" 
+       						 textNumberRoundingMode="roundUp" 
+       						 textPadKind="none" 
+       						 textStandardBase="10" 
+       						 textStandardDecimalSeparator="." 
+       						 textStandardExponentRep="E" 
+       						 textStandardInfinityRep="Inf" 
+       						 textStandardNaNRep="NaN" 
+       						 textStandardZeroRep="" 
+       						 textStringJustification="left" 
+       						 textStringPadCharacter="%SP;" 
+       						 textTrimKind="none" 
+       						 textZonedSignStyle="asciiStandard" 
+       						 trailingSkip="0" 
+       						 truncateSpecifiedLengthString="no" 
+       						 useNilForDefault="no">
+                </dfdl:format>
+      		</dfdl:defineFormat>
+      		
+			<!-- Common DFDL property values for a vCard property -->
+	    	<dfdl:defineFormat name="vCardPropertyFormat">
+    	    	<dfdl:format occursCountKind="parsed" 
+        				 	 terminator="%CR;%LF;%WSP*;">
+        		</dfdl:format>
+      		</dfdl:defineFormat>
+
+    </xsd:appinfo>
+	</xsd:annotation>
+	
+
+</xsd:schema>

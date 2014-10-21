@@ -1,0 +1,18 @@
+begin:vcard
+version:2.1
+n:Gump;Forrest
+fn:Forrest Gump
+bday:1970-02-28
+org:Bubba Gump Shrimp Co.
+title:Shrimp Man
+photo;gif:http://www.example.com/dir_photos/my_photo.gif
+tel;work;voice:(111) 555-1212
+tel;home;voice:(404) 555-1212
+adr;work:100 Waters Edge;Baytown;LA;30314;United States of America
+label;work;encoding=quoted-printable:100 Waters Edge=0D=0ABaytown, LA 30314=0D=0AUnited States of America
+adr;home:42 Plantation St.;Baytown;LA;30314;United States of America
+label;home;encoding=quoted-printable:42 Plantation St.=0D=0ABaytown, LA 30314=0D=0AUnited States of America
+email;pref;internet:forrestgump@example.com
+rev:20080424T195243Z
+geo:34.3,-56
+end:vcard

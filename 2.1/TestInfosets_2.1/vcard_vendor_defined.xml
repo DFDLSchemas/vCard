@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vCards xmlns="http://www.ibm.com/dfdl/vCard/2.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <vCard>
+    <Version xmlns="">
+      <VersionNumber xsi:type="xs:string">2.1</VersionNumber>
+    </Version>
+    <Name xmlns="">
+      <Family xsi:type="xs:string">Bloggs</Family>
+      <Given xsi:type="xs:string">Joe</Given>
+    </Name>
+    <FormattedName xmlns="">
+      <Value xsi:type="xs:string">Joe Bloggs</Value>
+    </FormattedName>
+    <DeliveryAddress xmlns="">
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <Street xsi:type="xs:string">1 Trafalgar Square</Street>
+      <Locality xsi:type="xs:string">London</Locality>
+      <PostalCode xsi:type="xs:string">WC2N</PostalCode>
+      <CountryName xsi:type="xs:string">United Kingdom</CountryName>
+    </DeliveryAddress>
+    <Telephone xmlns="">
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <Parameter xsi:type="xs:string">CELL</Parameter>
+      <Value xsi:type="xs:string">+44 20 1234 5678</Value>
+    </Telephone>
+    <Email xmlns="">
+      <Parameter xsi:type="xs:string">INTERNET</Parameter>
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <Value xsi:type="xs:string">me@joebloggs.com</Value>
+    </Email>
+    <URL xmlns="">
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <Value xsi:type="xs:string">http:/joebloggs.com</Value>
+    </URL>
+    <VendorDefined xmlns="">
+      <ItemName xsi:type="xs:string">SKYPE-USERNAME</ItemName>
+      <Value xsi:type="xs:string">joe.bloggs</Value>
+    </VendorDefined>
+    <VendorDefined xmlns="">
+      <ItemName xsi:type="xs:string">TWITTER</ItemName>
+      <Parameter xsi:type="xs:string">BLAH</Parameter>
+      <Value xsi:type="xs:string">http:/twitter.comjoebloggs</Value>
+    </VendorDefined>
+  </vCard>
+</vCards>

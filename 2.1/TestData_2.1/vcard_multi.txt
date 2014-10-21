@@ -1,0 +1,22 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Bloggs;Joe;;;
+FN:Joe Bloggs
+EMAIL;INTERNET;HOME:me@joebloggs.com
+TEL;HOME;CELL:+44 20 1234 5678;+44 20 1234 9999
+ADR;HOME:;;1 Trafalgar Square;London;;WC2N;United Kingdom
+URL;HOME:http://joebloggs.com
+X-SKYPE-USERNAME:joe.bloggs
+X-TWITTER;BLAH:http://twitter.com/joebloggs
+END:VCARD
+BEGIN:VCARD
+VERSION:2.1
+N:Bloggs;Joe;;;
+FN:Joe Bloggs
+EMAIL;INTERNET;HOME:me@joebloggs.com
+TEL;HOME;CELL:+44 20 1234 5678
+ADR;HOME:;;1 Trafalgar Square;London;;WC2N;United Kingdom
+URL;HOME:http://joebloggs.com
+X-SKYPE-USERNAME:joe.bloggs
+X-TWITTER;BLAH:http://twitter.com/joebloggs
+END:VCARD

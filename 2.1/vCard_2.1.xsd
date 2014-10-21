@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--***********************************************************************
+* DFDL vCard schema reproduced from IETF RFC 6350, vCard Format Specification 
+* (http://tools.ietf.org/html/rfc6350) 
+* 
+* Copyright 2014 IETF Trust and the persons identified as the document authors, all rights reserved. 
+* 
+* Redistribution and use in source and binary forms, with or without modification, is permitted to, and 
+* subject to the license terms contained in, the Simplified BSD License set forth in Section 4.c of the 
+* IETF Trust’s Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info). 
+* 
+* Contributors: 
+* 
+* IBM - initial implementation of the DFDL vCard schemas 
+*********************************************************************** 
+* Version 1.0 vCard_2.1.xsd 
+*
+* Change History:
+*********************************************************************** 
+* This DFDL schema models version 2.1 vCards. It provides a set of DFDL-annotated
+* elements for a standard vCard file consisting of one or more vCard objects, 
+* for use with DFDL processors.
+*
+* The schema does not support the following features of the vCard 2.1 specification:
+* - Use of RFC 822 line folding to split long lines into multiple shorter lines;
+* - Changing the encoding using the CHARSET property parameter; 
+* - Property grouping;
+* - AGENT property's embedded vCard itself containing an AGENT property.
+*
+* Additionally no runtime validation is performed on:
+* - Property parameters;
+* - Most property values 
+* 
+*********************************************************************** -->
+<xsd:schema targetNamespace="http://www.ibm.com/dfdl/vCard/2.1" 
+            xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
+            xmlns:fmt="http://www.ibm.com/dfdl/vCard/2.1/Format" 
+            xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions" 
+            xmlns:vcd="http://www.ibm.com/dfdl/vCard/2.1" 
+            xmlns:fn="http://www.w3.org/2005/xpath-functions"
+			xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	
+  <xsd:import namespace="http://www.ibm.com/dfdl/vCard/2.1/Format" schemaLocation="vCard_Format_2.1.xsd"/>
+  
+  <xsd:complexType name="t_vCard">
+    <xsd:sequence dfdl:initiatedContent="yes" dfdl:sequenceKind="unordered">
+      <xsd:element dfdl:initiator="VERSION" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" name="Version" type="vcd:t_VersionDetails"/>
+	  <!-- NOTE must appear before N to avoid N being treated as a NOTE -->
+      <xsd:element dfdl:initiator="NOTE" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Comment" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="N" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Name" type="vcd:t_NameDetails"/>
+      <xsd:element dfdl:initiator="FN" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="FormattedName" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="ORG" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Organization" type="vcd:t_OrganizationDetails"/>
+      <xsd:element dfdl:initiator="TITLE" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Title" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="ROLE" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="BusinessCategory" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="ADR" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="DeliveryAddress" type="vcd:t_AddressDetails"/>
+	  <!-- AGENT has an embedded vCard as its value, so does not have a terminator -->
+      <xsd:element dfdl:initiator="AGENT" dfdl:occursCountKind="parsed" maxOccurs="unbounded" minOccurs="0" name="Agent" type="vcd:t_AgentDetails"/>
+      <xsd:element dfdl:initiator="LOGO" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Logo" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="PHOTO" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Photo" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="TEL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Telephone" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="EMAIL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Email" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="LABEL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="DeliveryLabel" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="SOUND" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Sound" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="TZ" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Timezone" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="GEO" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="GeographicLocation" type="vcd:t_GeographyDetails"/>
+      <xsd:element dfdl:initiator="URL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="URL" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="BDAY" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Birthdate" type="vcd:t_BirthdateDetails"/>
+      <xsd:element dfdl:initiator="REV" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Revision" type="vcd:t_RevisionDetails"/>
+      <xsd:element dfdl:initiator="UID" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="UID" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="KEY" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Key" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="MAILER" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Mailer" type="vcd:t_Details"/>
+      <xsd:element dfdl:initiator="X-" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="VendorDefined" type="vcd:t_VendorDefinedDetails"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="t_Embedded_vCard">
+    <xsd:sequence dfdl:initiatedContent="yes" dfdl:sequenceKind="unordered">
+	    <!-- Restriction: Must not include AGENT -->
+        <xsd:element dfdl:initiator="VERSION" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" name="Version" type="vcd:t_VersionDetails"/>
+	    <!-- NOTE must appear before N to avoid N being treated as a NOTE -->
+        <xsd:element dfdl:initiator="NOTE" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Comment" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="N" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Name" type="vcd:t_NameDetails"/>
+        <xsd:element dfdl:initiator="FN" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="FormattedName" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="ORG" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Organization" type="vcd:t_OrganizationDetails"/>
+        <xsd:element dfdl:initiator="TITLE" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Title" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="ADR" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="DeliveryAddress" type="vcd:t_AddressDetails"/>
+        <xsd:element dfdl:initiator="LOGO" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Logo" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="PHOTO" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Photo" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="TEL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Telephone" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="EMAIL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Email" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="LABEL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="DeliveryLabel" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="SOUND" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Sound" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="TZ" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Timezone" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="GEO" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="GeographicLocation" type="vcd:t_GeographyDetails"/>
+        <xsd:element dfdl:initiator="URL" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="URL" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="BDAY" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Birthdate" type="vcd:t_BirthdateDetails"/>
+        <xsd:element dfdl:initiator="ROLE" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="BusinessCategory" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="REV" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Revision" type="vcd:t_RevisionDetails"/>
+        <xsd:element dfdl:initiator="UID" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="UID" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="KEY" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Key" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="MAILER" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="Mailer" type="vcd:t_Details"/>
+        <xsd:element dfdl:initiator="X-" dfdl:ref="fmt:vCardPropertyFormat" maxOccurs="unbounded" minOccurs="0" name="VendorDefined" type="vcd:t_VendorDefinedDetails"/>
+    </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_Values">
+    <xsd:sequence dfdl:separator=";">
+      <xsd:element dfdl:occursCountKind="implicit" maxOccurs="unbounded" name="Value" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+ 
+  <xsd:group name="g_Parameters">
+      <xsd:sequence dfdl:separator=";" dfdl:separatorPosition="prefix" dfdl:terminator=":">
+        <xsd:element maxOccurs="unbounded" minOccurs="0" name="Parameter" type="xsd:string"/>
+      </xsd:sequence>
+  </xsd:group>
+
+  <xsd:complexType name="t_Details">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_Values"/>
+      </xsd:sequence>
+  </xsd:complexType>
+ 
+  <xsd:group name="g_OrganizationValues">
+    <xsd:sequence dfdl:separator=";">
+      <xsd:element minOccurs="0" name="OrgName" type="xsd:string"/>
+      <xsd:element maxOccurs="unbounded" minOccurs="0" name="OrgUnit" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+  
+  <xsd:complexType name="t_OrganizationDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_OrganizationValues"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_GeographyValues">
+    <xsd:sequence dfdl:separator=",">
+      <xsd:element dfdl:textNumberPattern="#0.#" name="Latitude" type="xsd:decimal"/>
+      <xsd:element dfdl:textNumberPattern="#0.#" name="Longitude" type="xsd:decimal"/>
+    </xsd:sequence>
+  </xsd:group>
+  
+  <xsd:complexType name="t_GeographyDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_GeographyValues"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_BirthdateValues">
+    <xsd:choice>
+      <xsd:element dfdl:calendarPattern="yyyy-MM-dd" name="DateISOExtended" type="xsd:date"/>
+      <xsd:element dfdl:calendarPattern="yyyyMMdd" name="DateISOBasic" type="xsd:dateTime"/>
+    </xsd:choice>
+  </xsd:group>
+  
+  <xsd:complexType name="t_BirthdateDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_BirthdateValues"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_RevisionValues">
+    <xsd:choice>
+      <xsd:element dfdl:calendarPattern="yyyy-MM-dd'T'HH:mm:ssXXX" name="DateTimeISOExtendedUTC" type="xsd:dateTime"/>
+      <xsd:element dfdl:calendarPattern="yyyyMMdd'T'HHmmssXX" name="DateTimeISOBasicUTC" type="xsd:dateTime"/>
+      <xsd:element dfdl:calendarPattern="yyyy-MM-dd'T'HH:mm:ss" name="DateTimeISOExtendedLocal" type="xsd:dateTime"/>
+      <xsd:element dfdl:calendarPattern="yyyyMMdd'T'HHmmss" name="DateTimeISOBasicLocal" type="xsd:dateTime"/>
+    </xsd:choice>
+  </xsd:group>
+  
+  <xsd:complexType name="t_RevisionDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_RevisionValues"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_NameValues">
+    <xsd:sequence dfdl:separator=";">
+      <xsd:element minOccurs="0" name="Family" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Given" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Middle" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Prefix" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Suffix" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+  
+  <xsd:complexType name="t_NameDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_NameValues"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_AddressValues">
+    <xsd:sequence dfdl:separator=";">
+      <xsd:element minOccurs="0" name="PoBox" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="ExtendedAddress" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Street" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Locality" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="Region" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="PostalCode" type="xsd:string"/>
+      <xsd:element minOccurs="0" name="CountryName" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:group>
+ 
+  <xsd:complexType name="t_AddressDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_AddressValues"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="t_AgentDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:element dfdl:initiator="%WSP*;BEGIN%WSP*;:%WSP*;VCARD%CR;%LF;%WSP*;" dfdl:terminator="END%WSP*;:%WSP*;VCARD%WSP*;" name="vCard" type="vcd:t_Embedded_vCard"/>
+      </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:complexType name="t_VendorDefinedDetails">
+      <xsd:sequence>
+        <xsd:element dfdl:escapeSchemeRef="" dfdl:lengthKind="pattern" dfdl:lengthPattern="[^;:]+" name="ItemName" type="xsd:string"/>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_Values"/>
+     </xsd:sequence>
+  </xsd:complexType>
+  
+  <xsd:complexType name="t_VersionDetails">
+      <xsd:sequence>
+        <xsd:group ref="vcd:g_Parameters"/>
+        <xsd:group ref="vcd:g_VersionValues"/>
+     </xsd:sequence>
+  </xsd:complexType>
+
+  <xsd:group name="g_VersionValues">
+    <xsd:sequence dfdl:separator=";">
+      <xsd:element fixed="2.1" name="VersionNumber" type="xsd:string">
+    	<xsd:annotation>
+			<xsd:appinfo source="http://www.ogf.org/dfdl/">
+				<dfdl:assert message="Not version 2.1" test="{. eq '2.1'}"/>
+			</xsd:appinfo>
+		</xsd:annotation>
+      </xsd:element>
+    </xsd:sequence>
+  </xsd:group>
+ 
+  <xsd:element ibmSchExtn:docRoot="true" name="vCards">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element dfdl:occursCountKind="implicit" maxOccurs="unbounded" ref="vcd:vCard"/>
+     </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+   
+  <xsd:element dfdl:initiator="%WSP*;BEGIN%WSP*;:%WSP*;VCARD%CR;%LF;%WSP*;" dfdl:terminator="END%WSP*;:%WSP*;VCARD%WSP*;" ibmSchExtn:docRoot="true" name="vCard" type="vcd:t_vCard"/>
+
+    <xsd:annotation>
+		<xsd:appinfo source="http://www.ogf.org/dfdl/">
+			<dfdl:format byteOrder="bigEndian" encoding="ASCII" ref="fmt:vCardDefinitionFormat"/>
+		</xsd:appinfo>
+	</xsd:annotation>
+	
+
+</xsd:schema>

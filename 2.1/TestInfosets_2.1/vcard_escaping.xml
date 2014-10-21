@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vCards xmlns="http://www.ibm.com/dfdl/vCard/2.1" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <vCard>
+    <Version xmlns="">
+      <VersionNumber xsi:type="xs:string">2.1</VersionNumber>
+    </Version>
+    <Comment xmlns="">
+      <Parameter xsi:type="xs:string">ENCODING=QUOTED-PRINTABLE</Parameter>
+      <Value xsi:type="xs:string">Testing escaping- : should appear &amp; ; comma should appear &amp; 
+ (CRLF) should appear &amp; / should appear, all in the same field </Value>
+    </Comment>
+    <Name xmlns="">
+      <Family xsi:type="xs:string">Gump</Family>
+      <Given xsi:type="xs:string">Forrest</Given>
+    </Name>
+    <FormattedName xmlns="">
+      <Value xsi:type="xs:string">Forrest Gump</Value>
+    </FormattedName>
+    <Organization xmlns="">
+      <OrgName xsi:type="xs:string">Bubba Gump Shrimp Co.</OrgName>
+    </Organization>
+    <Title xmlns="">
+      <Value xsi:type="xs:string">Shrimp Man</Value>
+    </Title>
+    <DeliveryAddress xmlns="">
+      <Parameter xsi:type="xs:string">WORK</Parameter>
+      <PoBox xsi:type="xs:string">100 Waters Edge</PoBox>
+      <ExtendedAddress xsi:type="xs:string">Baytown</ExtendedAddress>
+      <Street xsi:type="xs:string">LA</Street>
+      <Locality xsi:type="xs:string">30314</Locality>
+      <Region xsi:type="xs:string">United States of America</Region>
+    </DeliveryAddress>
+    <DeliveryAddress xmlns="">
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <PoBox xsi:type="xs:string">42 Plantation St.</PoBox>
+      <ExtendedAddress xsi:type="xs:string">Baytown</ExtendedAddress>
+      <Street xsi:type="xs:string">LA</Street>
+      <Locality xsi:type="xs:string">30314</Locality>
+      <Region xsi:type="xs:string">United States of America</Region>
+    </DeliveryAddress>
+    <Photo xmlns="">
+      <Parameter xsi:type="xs:string">GIF</Parameter>
+      <Value xsi:type="xs:string">http:/www.example.comdir_photosmy_photo.gif</Value>
+    </Photo>
+    <Telephone xmlns="">
+      <Parameter xsi:type="xs:string">WORK</Parameter>
+      <Parameter xsi:type="xs:string">VOICE</Parameter>
+      <Value xsi:type="xs:string">(111) 555-1212</Value>
+    </Telephone>
+    <Telephone xmlns="">
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <Parameter xsi:type="xs:string">VOICE</Parameter>
+      <Value xsi:type="xs:string">(404) 555-1212</Value>
+    </Telephone>
+    <Email xmlns="">
+      <Parameter xsi:type="xs:string">PREF</Parameter>
+      <Parameter xsi:type="xs:string">INTERNET</Parameter>
+      <Value xsi:type="xs:string">forrestgump@example.com</Value>
+    </Email>
+    <DeliveryLabel xmlns="">
+      <Parameter xsi:type="xs:string">WORK</Parameter>
+      <Parameter xsi:type="xs:string">ENCODING=QUOTED-PRINTABLE</Parameter>
+      <Value xsi:type="xs:string">100 Waters Edge=0D=0ABaytown, LA 30314=0D=0AUnited States of America</Value>
+    </DeliveryLabel>
+    <DeliveryLabel xmlns="">
+      <Parameter xsi:type="xs:string">HOME</Parameter>
+      <Parameter xsi:type="xs:string">ENCODING=QUOTED-PRINTABLE</Parameter>
+      <Value xsi:type="xs:string">42 Plantation St.=0D=0ABaytown, LA 30314=0D=0AUnited States of America</Value>
+    </DeliveryLabel>
+    <Sound xmlns="">
+      <Parameter xsi:type="xs:string">VALUE=URL</Parameter>
+      <Value xsi:type="xs:string">file/multimedaudiojqpublic.wav</Value>
+    </Sound>
+    <Revision xmlns="">
+      <DateTimeISOBasicUTC xsi:type="xs:dateTime">2008-04-24T19:52:43.000000+00:00</DateTimeISOBasicUTC>
+    </Revision>
+    <UID xmlns="">
+      <Value xsi:type="xs:string">19950401-080045-40000F192713-0052</Value>
+    </UID>
+  </vCard>
+</vCards>
