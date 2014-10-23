@@ -6,8 +6,7 @@
     </Version>
     <Comment xmlns="">
       <Parameter xsi:type="xs:string">ENCODING=QUOTED-PRINTABLE</Parameter>
-      <Value xsi:type="xs:string">Testing escaping- : should appear &amp; ; comma should appear &amp; 
- (CRLF) should appear &amp; / should appear, all in the same field </Value>
+      <Value xsi:type="xs:string">Testing escaping- : should appear &amp; ; comma should appear &amp; &#13;&#10; (CRLF) should appear &amp; / should appear, all in the same field </Value>
     </Comment>
     <Name xmlns="">
       <Family xsi:type="xs:string">Gump</Family>
