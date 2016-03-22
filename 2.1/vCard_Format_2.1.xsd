@@ -14,9 +14,11 @@
 * 
 * IBM - initial implementation of the DFDL vCard schema 
 *********************************************************************** 
-* Version 1.0 vCard_Format.xsd 
+* Version 1.1 vCard_Format.xsd 
 *
 * Change History:
+* 2016-03-22    v1.1    Correct xmlns:fmt namespace
+*
 ***********************************************************************
 * This DFDL schema provides a set of DFDL property values and other DFDL
 * constructs to assist in the creation of DFDL schemas that model vCards, 
@@ -30,7 +32,7 @@
      xmlns:fn="http://www.w3.org/2005/xpath-functions"
      targetNamespace="http://www.ibm.com/dfdl/vCard/2.1/Format" 
 	 xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
-	 xmlns:fmt="http://www.ibm.com/dfdl/vCard/Format" 
+	 xmlns:fmt="http://www.ibm.com/dfdl/vCard/2.1/Format" 
 	 xmlns:ibmSchExtn="http://www.ibm.com/schema/extensions">
 	
     <xsd:annotation>
