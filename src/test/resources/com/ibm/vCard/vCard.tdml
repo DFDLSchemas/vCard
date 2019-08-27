@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tdml:testSuite suiteName="vCard" description="IPFIX Tests"
+  xmlns:tdml="http://www.ibm.com/xmlns/dfdl/testData" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:dfdl="http://www.ogf.org/dfdl/dfdl-1.0/" 
+  xmlns:daf="urn:ogf:dfdl:2013:imp:daffodil.apache.org:2018:ext"
+  xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+  defaultRoundTrip="onePass"
+  defaultConfig="cfg">
+
+  <tdml:defineConfig name="cfg">
+    <daf:tunables>
+      <daf:suppressSchemaDefinitionWarnings>
+        unsupportedAttributeFormDefault
+        encodingErrorPolicyError
+        emptyElementParsePolicyError
+        namespaceDifferencesOnly
+      </daf:suppressSchemaDefinitionWarnings>
+    </daf:tunables>
+  </tdml:defineConfig>
+
+  <!-- 
+       If you want to test this schema under IBM DFDL you have to 
+       make it work with this config first since 'treatAsMissing' 
+       is the behavior IBM DFDL implements, not treatAsEmpty which is
+       the daffodil standard.
+    -->
+  <tdml:defineConfig name="cfg_noEmptyElements">
+    <daf:tunables>
+      <daf:defaultEmptyElementParsePolicy>treatAsMissing</daf:defaultEmptyElementParsePolicy>
+      <daf:suppressSchemaDefinitionWarnings>
+        unsupportedAttributeFormDefault
+        encodingErrorPolicyError
+      </daf:suppressSchemaDefinitionWarnings>
+    </daf:tunables>
+  </tdml:defineConfig>
+
+  
+  <tdml:parserTestCase name="vCard_embedded" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_embedded.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/ibm/vCard/vcard_embedded.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="vCard_escaping" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_escaping.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/ibm/vCard/vcard_escaping.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="vCard_lower_case" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_lower_case.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/ibm/vCard/vcard_lower_case.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="vCard_multi" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_multi.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/ibm/vCard/vcard_multi.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="vCard_not_2.1" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_not_2.1.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:errors>
+      <tdml:error>Parse Error</tdml:error>
+      <tdml:error>Assertion Failed</tdml:error>
+      <tdml:error>Not version 2.1</tdml:error>
+    </tdml:errors>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="vCard_upper_case" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_upper_case.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/ibm/vCard/vcard_upper_case.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+
+  <tdml:parserTestCase name="vCard_vendor_defined" root="vCards"
+    model="com/ibm/vCard/vCard_2.1.xsd" roundTrip="false">
+    <tdml:document>
+      <tdml:documentPart type="file">com/ibm/vCard/vcard_vendor_defined.txt</tdml:documentPart>
+    </tdml:document>
+    <tdml:infoset>
+      <tdml:dfdlInfoset type="file">com/ibm/vCard/vcard_vendor_defined.xml</tdml:dfdlInfoset>
+    </tdml:infoset>
+  </tdml:parserTestCase>
+  
+</tdml:testSuite>
