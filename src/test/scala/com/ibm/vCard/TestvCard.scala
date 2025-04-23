@@ -7,13 +7,13 @@ import org.junit.AfterClass
 object TestvCard_DFDL {
   val runner = Runner("com/ibm/vCard", "vCard.tdml")
 
-  @AfterClass def shutDown {
-    runner.reset
+  @AfterClass def shutDown = {
+    runner.reset()
   }
 }
 
 class TestvCard_DFDL {
-  
+
   import TestvCard_DFDL._
 
   @Test def test_embedded(): Unit = { runner.runOneTest("vCard_embedded") }
