@@ -1,7 +1,9 @@
-name := "dfdl-vcard"
+val root = (project in file("."))
+  .settings(
+    name := "dfdl-vcard",
 
-organization := "com.ibm"
+    organization := "com.ibm",
 
-version := "0.0.1-SNAPSHOT"
-
-enablePlugins(DaffodilPlugin)
+    version := "0.0.1-SNAPSHOT"
+  )
+  .daffodilProject()
